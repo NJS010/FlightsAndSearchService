@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// require('dotenv').config()
 
-// const { City } = require('./models/index');
 const { PORT } = require('./config/serverConfig')
-// const CityRepository = require('./repository/city-repository');
 const ApiRoutes = require('./routes/index');
+
+const db = require('./models/index');
+// const {City, Airport} = require('./models/index');
 
 const setupAndStartServer = async () => {
 
@@ -19,14 +19,10 @@ const setupAndStartServer = async () => {
 
     app.listen(PORT, async () => {
         console.log(`Server started at ${PORT}`);
-        // console.log(process.env.PORT)
-
-        // await City.create({
-        //     name: "New Delhi",
-        // })
-
-        // const repo = new CityRepository();
-        // repo.createCity({name: "New Delhi"});
+        db.sequelize.sync({alter: true});
+        if(process.env.SYNC_DB){
+            db.sequelize.sync({alter: true});
+        }
     });
 
 }
