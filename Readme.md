@@ -1,27 +1,3 @@
-   Roll-based
-/
-      - src/
-           index.js // server
-           models/
-           controllers/
-           middlewares/
-           services/
-           utils/
-           config/
-           repository/
-       - tests/ [later] 
-       - static/
-       - temp/
-  
-     Feature-based
-/ 
-    - flights
-         / models
-         / controller
-    - search
-         / models
-         / controllers
-
 # Welcome to Flights Service
 
 ## Project Setup
